@@ -3,15 +3,18 @@ import Navbar from './components/Navbar';
 import Dashboard from './pages/Dashboard';
 import CreateTicket from './pages/CreateTicket';
 import TicketDetail from './pages/TicketDetail';
+import { NotificationProvider } from './components/NotificationContext';
 
 function Root() {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
-      <Navbar />
-      <main className="flex-1 overflow-auto">
-        <Outlet />
-      </main>
-    </div>
+    <NotificationProvider>
+      <div className="min-h-screen bg-slate-50 flex flex-col">
+        <Navbar />
+        <main className="flex-1 overflow-auto">
+          <Outlet />
+        </main>
+      </div>
+    </NotificationProvider>
   );
 }
 
