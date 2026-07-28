@@ -21,11 +21,11 @@ def get_db():
         db.close()
 
 
-@router.post("/", response_model=schemas.TicketResponse)
+@router.post("", response_model=schemas.TicketResponse)
 def create_ticket(ticket: schemas.TicketCreate, db: Session = Depends(get_db)):
     return crud.create_ticket(db, ticket)
 
-@router.get("/", response_model=List[schemas.TicketResponse])
+@router.get("", response_model=List[schemas.TicketResponse])
 def get_all_tickets(
     search: str = Query(None),
     status: str = Query(None),
