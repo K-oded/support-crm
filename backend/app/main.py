@@ -11,10 +11,6 @@ Base.metadata.create_all(bind=engine)
 
 app.include_router(tickets.router)
 
-@app.get("/")
-def root():
-    return {"message": "Support CRM API is running!"}
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
