@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from .database import Base, engine
 from .routers import tickets
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(title="Support CRM API")
 
@@ -21,3 +22,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+from fastapi.staticfiles import StaticFiles
+
+app.mount("/", StaticFiles(directory="app/static", html=True), name="static")
